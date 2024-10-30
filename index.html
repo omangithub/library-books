@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Search</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <div id="topBar">
+    <div id="left">
+      <image id="icon" src="pictures/book_and_cats.png"></image>
+      <div id="leftIconText">My Library</div>
+    </div>
+    <div id="links">
+      <div id="links">Page 1</div>
+      <div id="links">Page 2</div>
+      <div id="links">Page 3</div>
+    </div>
+  </div>
+  <div id="imageBox">
+<image id="topImage" src="pictures/books.JPEG"></image>
+<div id="descriptionBox"><p id="description">Thousands of books to browse at your leisure. An endless fountain of knowledge at your fingertips and new titles added each day. So keep checking in. You might discover your next favorite novel!</p></div>
+  </div>
+  <div id="contents">
+    <div id="options">
+      <div>
+        <button class ="buttons" id="newBook">NEW BOOK</button>
+      </div>
+      <div id="bookForm">
+        <label name="addBookTitle">Title</label>
+        <input class="formInput" name="addBookTitle" type="text" id="addBookTitle">
+        <label name="addBookAuthor">Author</label>
+        <input class="formInput" name="addBookAuthor" type="text" id="addBookAuthor">
+        <label name="addBookPages">Pages</label>
+        <input class="formInput" name="addBookPages" type="text" id="addBookPages">
+        <label name="addBookRead">Read</label>
+        <input class="formInput" name="addBookRead" type="text" id="addBookRead">
+        <button id="submitNewBook" type="submit">submit</button>
+      </div>
+    </div>
+    <div id="availableBooksTextBox">
+      <p id="availableBooksText">Currently available books</p>
+      <div id="bookCardDisplay">
+      </div>
+    </div>
+
+  </div>
+</body>
+<script src="javascript.js"></script>
+</html>
