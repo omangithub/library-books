@@ -49,9 +49,14 @@ function addUserDetailsToArray () {
 }
 
 function displayBooksOnPage() {
+  while (displayBooks.firstChild) {
+    displayBooks.removeChild(displayBooks.lastChild);
+  }
+  if(myLibrary.length!==0){
+  for(let i=0;i<myLibrary.length;i++) {  
   const newBook = document.createElement("div");
   newBook.classList="book";
-  newBook.id=myLibrary.length+1;
+  newBook.id="book" + i;
   newBook.style.width="150px";
   newBook.style.height="200px";
   newBook.style.background="white";
@@ -59,22 +64,22 @@ function displayBooksOnPage() {
   newBook.style["border-radius"]="0% 10% 10% 0%";
   newBook.style.margin="5px";
   const newBookText = document.createElement("div");
-  newBookText.innerText="Title: " + titleOfBook.value + "\nAuthor: " + authorOfBook.value + "\nNo. of pages: " + pagesOfBook.value;
+  newBookText.innerText="Title: " + myLibrary[i].title + "\nAuthor: " + myLibrary[i].author + "\nNo. of pages: " + myLibrary[i].pages;
   const removeBookButton = document.createElement("button");
   removeBookButton.classList="buttons";
   removeBookButton.style.margin="20px";
   removeBookButton.innerText="REMOVE BOOK";
-  removeBookButton.addEventListener("click", ()=>{
-    removedItem=this.id;
-    console.log(this.id);
+  removeBookButton.addEventListener("click", (e)=>{
+    removedItem="book" + i;
+
     removeThisBook();
+    console.log(myLibrary.length);
+    displayBooksOnPage()
   })
   displayBooks.appendChild(newBook);
   newBook.appendChild(newBookText);
   newBook.appendChild(removeBookButton);
-}
-
+}}
 function removeThisBook() {
   myLibrary.splice(removedItem ,1);
-  console.log(myLibrary);
-}
+}}
