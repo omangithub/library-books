@@ -6,7 +6,7 @@ const submitButton = document.getElementById("submitNewBook");
 const titleOfBook = document.getElementById("addBookTitle");
 const authorOfBook = document.getElementById("addBookAuthor");
 const pagesOfBook = document.getElementById("addBookPages");
-const bookRead = document.getElementById("addBookRead");
+// const bookRead = document.getElementById("addBookRead");
 let newBookForm=false;
 let removedItem="";
 
@@ -42,7 +42,7 @@ function addBookToLibrary() {
 }
 
 function addUserDetailsToArray () {
-  const newBookForArray = new Book (titleOfBook.value, authorOfBook.value, pagesOfBook.value, bookRead.value);
+  const newBookForArray = new Book (titleOfBook.value, authorOfBook.value, pagesOfBook.value, false);
   myLibrary.push(newBookForArray);
   console.log(myLibrary);
 
@@ -76,9 +76,14 @@ function displayBooksOnPage() {
     console.log(myLibrary.length);
     displayBooksOnPage()
   })
+  const spacer = document.createElement("div");
+  spacer.innerText="MARK READ";
+  spacer.style.textAlign="right";
+  spacer.style.margin="0px 5px 0px 0px";
   displayBooks.appendChild(newBook);
   newBook.appendChild(newBookText);
   newBook.appendChild(removeBookButton);
+  newBook.appendChild(spacer);
 }}
 function removeThisBook() {
   myLibrary.splice(removedItem ,1);
