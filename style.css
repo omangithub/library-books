@@ -23,11 +23,27 @@ html {
   font-size: 2em;
 }
 
-.imageBox {
+#topBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: auto;
+    margin:0px;
+    width: auto;
+    background: black;
+}
+
+#topBoxText {
+    color: white;
+    text-align: center;
+}
+
+.bottomBox {
     display: flex;
     align-items: left;
     justify-content: left;
-    height: 10px;
+    height: 30px;
     width: auto;
     margin:0px;
     width: auto;
@@ -160,9 +176,4 @@ html {
     text-align: center;
     font-size: 1.5em;
     height: 100px;
-}
-
-.bookIcon {
-    opacity: 1;
-
 }

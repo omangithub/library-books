@@ -6,7 +6,7 @@ const submitButton = document.getElementById("submitNewBook");
 const titleOfBook = document.getElementById("addBookTitle");
 const authorOfBook = document.getElementById("addBookAuthor");
 const pagesOfBook = document.getElementById("addBookPages");
-// const bookRead = document.getElementById("addBookRead");
+const topBoxAlerts = document.getElementById("topBoxText");
 let newBookForm=false;
 let removedItem="";
 
@@ -21,8 +21,12 @@ addBook.addEventListener("click", ()=> {
 
 submitButton.addEventListener("click", ()=>{
   if (newBookForm) {
+    if (titleOfBook.value !=="" && authorOfBook.value !=='' && pagesOfBook.value !=="") {
     addUserDetailsToArray();
     displayBooksOnPage();
+    } else {
+      topBoxAlerts.innerText="Please enter details into all fields of the form"
+    }
   }
 })
 
@@ -35,6 +39,8 @@ function Book(title, author, pages, read) {
     return this.title, this.author, this.pages, this.read;
   }
 } 
+
+myLibrary[0] = new Book ("Harry Potter", "J K Rowling", 250, false);
 
 function addBookToLibrary() {
   addBook.style["background-color"]="red";
@@ -59,11 +65,12 @@ function displayBooksOnPage() {
   newBook.id="book" + i;
   newBook.style.width="150px";
   newBook.style.height="200px";
-  newBook.style.background="white";
   newBook.style.border="1px solid black";
   newBook.style["border-radius"]="0% 10% 10% 0%";
   newBook.style.margin="5px";
+  newBook.style.background="white";
   const newBookText = document.createElement("div");
+  newBookText.style.padding="0px 5px 0px 5px";
   newBookText.innerText="Title: " + myLibrary[i].title + "\nAuthor: " + myLibrary[i].author + "\nNo. of pages: " + myLibrary[i].pages;
   const removeBookButton = document.createElement("button");
   removeBookButton.classList="buttons";
@@ -71,20 +78,44 @@ function displayBooksOnPage() {
   removeBookButton.innerText="REMOVE BOOK";
   removeBookButton.addEventListener("click", (e)=>{
     removedItem="book" + i;
-
     removeThisBook();
     console.log(myLibrary.length);
     displayBooksOnPage()
   })
-  const spacer = document.createElement("div");
-  spacer.innerText="MARK READ";
-  spacer.style.textAlign="right";
-  spacer.style.margin="0px 5px 0px 0px";
+  const markReadBox = document.createElement("div");
+  if (myLibrary[i].read===true) {
+    markReadBox.style.background="yellow";
+    markReadBox.innerText="MARK UNREAD"
+  } else {
+    markReadBox.style.background="white";
+    markReadBox.innerText="MARK READ"
+  }
+  markReadBox.classList="readBox";
+  markReadBox.style.textAlign="right";
+  markReadBox.style.width="100%";
+  markReadBox.style.height="20px";
+  markReadBox.style.border="solid 1px black";
+  markReadBox.style.margin="0px 5px 0px 0px";
+  markReadBox.addEventListener("click", ()=>{
+    myLibrary[i].toggleRead();
+    displayBooksOnPage();
+  })
   displayBooks.appendChild(newBook);
   newBook.appendChild(newBookText);
   newBook.appendChild(removeBookButton);
-  newBook.appendChild(spacer);
+  newBook.appendChild(markReadBox);
 }}
 function removeThisBook() {
   myLibrary.splice(removedItem ,1);
 }}
+
+Book.prototype.toggleRead = function () {
+  console.log(this.read);
+  if (this.read===false) {
+    this.read=true;
+  } else {
+    this.read=false;
+  }
+}
+
+displayBooksOnPage();

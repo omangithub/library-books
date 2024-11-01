@@ -18,10 +18,7 @@
       <div id="links">Page 3</div>
     </div>
   </div>
-  <div class="imageBox">
-<!-- <image id="topImage" src="pictures/books.JPEG"></image>
-<div id="descriptionBox"><p id="description"></p></div> -->
-  </div>
+  <div id="topBox"><p id="topBoxText"></p></div>
   <div id="contents">
     <div id="options">
       <div>
@@ -29,13 +26,11 @@
       </div>
       <div id="bookForm">
         <label name="addBookTitle">Title</label>
-        <input class="formInput" name="addBookTitle" type="text" id="addBookTitle">
+        <input maxlength="10" class="formInput" name="addBookTitle" type="text" id="addBookTitle">
         <label name="addBookAuthor">Author</label>
-        <input class="formInput" name="addBookAuthor" type="text" id="addBookAuthor">
-        <label name="addBookPages">Pages</label>
-        <input class="formInput" name="addBookPages" type="text" id="addBookPages">
-<!--        <label name="addBookRead">Read</label>
-        <input class="formInput" name="addBookRead" type="text" id="addBookRead"> -->
+        <input  maxlength="10" class="formInput" name="addBookAuthor" type="text" id="addBookAuthor">
+        <label name="addBookPages">Number of Pages</label>
+        <input maxlength="4"  type="number" class="formInput" name="addBookPages" type="text" id="addBookPages">
         <button id="submitNewBook" type="submit">submit</button>
       </div>
     </div>
@@ -44,7 +39,7 @@
 
     </div>
   </div>
-  <div class="imageBox"></div>
+  <div class="bottomBox"></div>
   <div id="bookCardDisplay">
   </div>
 </body>
