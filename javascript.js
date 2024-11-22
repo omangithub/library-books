@@ -30,7 +30,22 @@ submitButton.addEventListener("click", ()=>{
   }
 })
 
-function Book(title, author, pages, read) {
+class Book {
+  constructor (title,author,pages,read) {
+  this.title=title;
+  this.author=author;
+  this.pages=pages;
+  this.read=read; 
+  }
+
+  info() {
+    return this.title, this.author, this.pages, this.read;
+  }
+}
+
+// switch the following to classes
+
+/*function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -39,13 +54,14 @@ function Book(title, author, pages, read) {
     return this.title, this.author, this.pages, this.read;
   }
 } 
-
+*/
 myLibrary[0] = new Book ("Harry Potter", "J K Rowling", 250, false);
 
 function addBookToLibrary() {
   addBook.style["background-color"]="red";
   newBookForm=true;
 }
+
 
 function addUserDetailsToArray () {
   const newBookForArray = new Book (titleOfBook.value, authorOfBook.value, pagesOfBook.value, false);
@@ -75,9 +91,10 @@ function displayBooksOnPage() {
   const removeBookButton = document.createElement("button");
   removeBookButton.classList="buttons";
   removeBookButton.style.margin="20px";
+  removeBookButton.id=i;
   removeBookButton.innerText="REMOVE BOOK";
   removeBookButton.addEventListener("click", (e)=>{
-    removedItem="book" + i;
+    removedItem=e.target.id;
     removeThisBook();
     console.log(myLibrary.length);
     displayBooksOnPage()
